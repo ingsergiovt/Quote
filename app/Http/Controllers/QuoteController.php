@@ -41,7 +41,7 @@ class QuoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store_profile(Request $request)
+    public function store_profile(QuoteFormProfileRequest $request)
     {
 
         if(request()->form_code){
@@ -82,7 +82,7 @@ class QuoteController extends Controller
 
             ]);
 
-            return $quote;
+            // return $quote;
 
             return response()->json([
                 'success' => true,

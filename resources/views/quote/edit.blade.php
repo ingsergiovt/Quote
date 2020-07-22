@@ -283,9 +283,14 @@
                     if(resp.success){
 
                         btnVehicle.disabled = false;
+                        // console.log(resp);
                         $('.nav-pills > .active').next('a').trigger('click');
-                        console.log(resp);
-                        localStorage.setItem("form_id", resp.code);
+
+                        if(classes.length > 0){
+                            classes.forEach(function(input){
+                                input.classList.remove('is-invalid');
+                            })
+                        }
 
                     }
                 })

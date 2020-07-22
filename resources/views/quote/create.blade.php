@@ -302,6 +302,13 @@
 
                         $('.nav-pills > .active').next('a').trigger('click');
 
+                        const classes = document.querySelectorAll('.is-invalid')
+                        if(classes.length > 0){
+                            classes.forEach(function(input){
+                                input.classList.remove('is-invalid');
+                            })
+                        }
+
                     }
                 })
                 .catch(function(resp){
