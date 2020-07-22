@@ -20,6 +20,8 @@ Route::post('/form/vehicle', 'QuoteController@store_vehicle')->name('form.vehicl
 Route::post('/form/driver', 'QuoteController@store_driver')->name('form.driver.store');
 Route::post('/form/coverage', 'QuoteController@store_quote')->name('form.coverage.store');
 
+Route::get('show/quote/{code}', 'QuoteController@show')->name('quote.show');
+
 Route::get('/tanks', function(){
     return view('quote.thanks');
 })->name('thanks');

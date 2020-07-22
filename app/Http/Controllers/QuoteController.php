@@ -226,9 +226,10 @@ class QuoteController extends Controller
      * @param  \App\Quote  $quote
      * @return \Illuminate\Http\Response
      */
-    public function show(Quote $quote)
+    public function show($code)
     {
-        //
+        $quote = Quote::where('code', $code)->first();
+        return view('quote.show', compact('quote'));
     }
 
     /**
