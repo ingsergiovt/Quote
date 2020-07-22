@@ -4,10 +4,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="bi" name="bi">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->bi == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->bi == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->bi == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->bi == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!
@@ -19,10 +19,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="pd" name="pd">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->pd == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->pd == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->pd == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->pd == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!
@@ -34,10 +34,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="medpm" name="medpm">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->medpm == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->medpm == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->medpm == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->medpm == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!
@@ -49,10 +49,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="umbi" name="umbi">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->umbi == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->umbi == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->umbi == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->umbi == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!
@@ -64,10 +64,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="umpd" name="umpd">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->umpd == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->umpd == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->umpd == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->umpd == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!
@@ -79,10 +79,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="comp" name="comp">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->comp == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->comp == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->comp == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->comp == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!
@@ -94,10 +94,10 @@
         <div class="col-sm-8">
             <select class="form-control form-control-sm" id="coll" name="coll">
                 <option value="">Default select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="3">Option 4</option>
+                <option value="1" @isset($quote) @if($quote->coll == 1) selected @endif @endisset >Option 1</option>
+                <option value="2" @isset($quote) @if($quote->coll == 2) selected @endif @endisset >Option 2</option>
+                <option value="3" @isset($quote) @if($quote->coll == 3) selected @endif @endisset >Option 3</option>
+                <option value="4" @isset($quote) @if($quote->coll == 4) selected @endif @endisset >Option 4</option>
             </select>
             <div class="invalid-feedback">
                 Looks good!

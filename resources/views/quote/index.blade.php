@@ -31,7 +31,7 @@
                                         <td>{{ $quote->first_name }}</td>
                                         <td>{{ $quote->email }}</td>
                                         <td>
-                                            <button class="btn btn-primary">Edit</button>
+                                            <a href="{{route('quote.show', $quote->code)}}" class="btn btn-primary">Show</a>
                                         </td>
                                     </tr>
                                 @empty

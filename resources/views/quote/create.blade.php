@@ -25,15 +25,9 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    {{-- <div class="card-header"></div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                    </div> --}}
+                    <div class="card-header">
+                        <h4>Create a new Quote</h4>
+                    </div>
 
                     <nav>
                         <div class="nav nav-pills nav-fill" id="nav-tab" role="tablist">
@@ -136,23 +130,7 @@
 
                         </div>
                     </div>
-                    {{-- <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab1" data-toggle="tab">Shipping</a></li>
-                        <li><a href="#tab2" data-toggle="tab">Quantities</a></li>
-                        <li><a href="#tab3" data-toggle="tab">Summary</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab1">
-                            <a class="btn btn-primary btnNext" >Next</a>
-                        </div>
-                        <div class="tab-pane" id="tab2">
-                            <a class="btn btn-primary btnNext" >Next</a>
-                            <a class="btn btn-primary btnPrevious" >Previous</a>
-                        </div>
-                        <div class="tab-pane" id="tab3">
-                            <a class="btn btn-primary btnPrevious" >Previous</a>
-                        </div>
-                    </div> --}}
+
 
                 </div>
 
