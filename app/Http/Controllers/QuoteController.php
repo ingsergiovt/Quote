@@ -17,7 +17,8 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        //
+        $quotes = Quote::get();
+        return view('quote.index', compact('quotes'));
     }
 
     /**
@@ -123,12 +124,11 @@ class QuoteController extends Controller
                 'vehicle_use'           => request()->vehicle_use,
                 'vehicle_wheel_drive'   => request()->vehicle_wheel_drive,
                 'vehicle_year'          => request()->vehicle_year,
-
                 'vehicle_make'          => request()->vehicle_make,
-                'vehicle_model'          => request()->vehicle_model,
+                'vehicle_model'         => request()->vehicle_model,
             ]);
 
-            return $quote;
+            // return $quote;
 
             return response()->json([
                 'success' => true,
@@ -141,10 +141,8 @@ class QuoteController extends Controller
     public function store_driver(Request $request)
     {
 
-        // return request()->all();
-
         if(request()->form_code){
-
+            // return request()->all();
             $quote = Quote::where('code', request()->form_code)->first();
             // return $quote;
             // return request()->except(['_token', 'form_code']);
@@ -178,7 +176,7 @@ class QuoteController extends Controller
 
              ]);
 
-            return $quote;
+            // return $quote;
 
             return response()->json([
                 'success' => true,

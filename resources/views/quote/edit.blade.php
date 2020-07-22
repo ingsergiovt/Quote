@@ -1,4 +1,24 @@
 
+
+<script>
+    // console.log(localStorage.getItem("form"))
+    {
+        const form = JSON.parse(localStorage.getItem('form'))
+        if(form.complete){
+
+            window.location.href = "{{route('thanks')}}";
+
+            // let route = "{{ route('get.form', ['code' => ':code']) }}"
+            // let url = route.replace(':code', form.id);
+            // console.log(form.id)
+            // window.location.href = url;
+
+        }
+    }
+
+
+</script>
+
 @extends('layouts.app')
 @section('content')
     <div class="container">
@@ -223,6 +243,15 @@
             }
         }
 
+        const replaceData = () => {
+
+            document.getElementById('first_name_driver').value = document.getElementById('first_name').value
+            document.getElementById('middlename_driver').value = document.getElementById('middlename').value
+            document.getElementById('lastname_driver').value   = document.getElementById('lastname').value
+
+        }
+
+
 
         const getForm = JSON.parse(localStorage.getItem('form'))
         console.log(getForm);
@@ -293,6 +322,8 @@
 
                         $('.nav-pills > .active').next('a').trigger('click');
 
+                        replaceData();
+
                         console.log(resp)
                     }
                 })
@@ -347,7 +378,7 @@
                         localStorage.setItem("form", JSON.stringify(getForm));
                         // console.log(resp, "success")
 
-                        window.location.href = "{{route('login')}}";
+                        window.location.href = "{{route('thanks')}}";
 
                     }
                 })

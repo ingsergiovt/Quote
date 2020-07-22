@@ -3,13 +3,16 @@
     // console.log(localStorage.getItem("form"))
     {
         const form = JSON.parse(localStorage.getItem('form'))
-        if(form.id != ""){
+        if(form){
 
-            let route = "{{ route('get.form', ['code' => ':code']) }}"
-            let url = route.replace(':code', form.id);
-            console.log(form.id)
-            window.location.href = url;
+            if(form.id != ""){
 
+                let route = "{{ route('get.form', ['code' => ':code']) }}"
+                let url = route.replace(':code', form.id);
+                console.log(form.id)
+                window.location.href = url;
+
+            }
         }
     }
 
@@ -113,7 +116,7 @@
                         <div class="tab-pane fade" id="nav-coverage-tab" role="tabpanel" aria-labelledby="nav-coverage-info">
                             <div class="row">
                                 <div class="col-md-12 px-5">
-                                    <form action="{{route('form.profile.store')}}" class="mt-3 needs-validation " id="form_driver">
+                                    <form action="{{route('form.coverage.store')}}" class="mt-3 needs-validation " id="form_coverage">
                                         @csrf
                                         @include('quote.partials._coverage')
                                     </form>
@@ -126,7 +129,7 @@
                                 <div class="col-md-12 d-flex justify-content-around py-4">
                                     <button class="btn btn-secondary btnPrevious" >Previous</button>
                                     <button class="btn btn-warning save" name="save" value="">Save to Return Later</button>
-                                    <button class="btn btn-primary btnNext" id="save_quote">Get Quote</button>
+                                    <button class="btn btn-primary btnNext" id="get_quote">Get Quote</button>
                                 </div>
 
                             </div>
@@ -164,7 +167,7 @@
         const firstContinue     = document.getElementById('first_continue');
         const secondContinue    = document.getElementById('second_continue');
         const thirdContinue     = document.getElementById('third_continue');
-
+        const getCuote          = document.getElementById('get_quote');
 
         const btnProfile    = document.getElementById('nav-profile-info');
         const btnVehicle    = document.getElementById('nav-vehicle-info');
@@ -266,10 +269,19 @@
                     vehicle: false,
                     driver: false,
                     coverage: false,
+                    complete: false
                 }
 
                 localStorage.setItem("form", JSON.stringify(form));
             }
+
+        }
+
+        const replaceData = () => {
+
+            document.getElementById('first_name_driver').value = document.getElementById('first_name').value
+            document.getElementById('middlename_driver').value = document.getElementById('middlename').value
+            document.getElementById('lastname_driver').value   = document.getElementById('lastname').value
 
         }
 
@@ -298,12 +310,15 @@
             }else{
                 submiterProfileForm('form_profile')
                 .then(function(resp){
+                    console.log(resp)
                     if(resp.success){
 
                         btnVehicle.disabled = false;
                         getForm.id = resp.code;
                         getForm.profile = true;
                         localStorage.setItem("form", JSON.stringify(getForm));
+
+                        replaceData();
 
                         $('#form_vehicle').append(`<input type="hidden" name="form_code" id="form_code" value="${resp.code}">`);
 
@@ -321,18 +336,18 @@
         secondContinue.addEventListener('click', e => {
             const vehicleFormCompleted = getForm.vehicle
 
-            if(vehicleFormCompleted){
-                $('.nav-pills > .active').next('a').trigger('click');
-            }else{
-                submiterProfileForm('form_vehicle')
+            submiterProfileForm('form_vehicle')
                 .then(function(resp){
+                    console.log(resp)
                     if(resp.success){
 
                         btnDriver.disabled = false;
                         getForm.vehicle = true;
                         localStorage.setItem("form", JSON.stringify(getForm));
 
-                        $('#form_driver').append(`<input type="hidden" name="form_code" id="form_code" value="${resp.code}">`);
+                        replaceData();
+
+                        $('#form_driver').append(`<input type="hidden" name="form_code" id="form_code" value="${getForm.id}">`);
 
                         $('.nav-pills > .active').next('a').trigger('click');
 
@@ -341,18 +356,20 @@
                 .catch(function(resp){
                     showErros(resp);
                 })
-            }
+
+            // if(vehicleFormCompleted){
+            //     $('.nav-pills > .active').next('a').trigger('click');
+            // }else{
+
+            // }
         });
 
         thirdContinue.addEventListener('click', e => {
             const driverFormCompleted = getForm.driver
 
-            if(driverFormCompleted){
-                $('.nav-pills > .active').next('a').trigger('click');
-            }else{
-                // alert('aqui')
-                submiterProfileForm('form_driver')
+            submiterProfileForm('form_driver')
                 .then(function(resp){
+                    console.log(resp)
 
                     if(resp.success){
 
@@ -361,7 +378,7 @@
                         getForm.complete = true;
                         localStorage.setItem("form", JSON.stringify(getForm));
 
-                        $('#form_coverage').append(`<input type="hidden" name="form_code" id="form_code" value="${resp.code}">`);
+                        $('#form_coverage').append(`<input type="hidden" name="form_code" id="form_code" value="${getForm.id}">`);
 
                         $('.nav-pills > .active').next('a').trigger('click');
                     }
@@ -370,8 +387,36 @@
                 .catch(function(resp){
                     showErros(resp);
                 })
-            }
+
+            // if(driverFormCompleted){
+            //     $('.nav-pills > .active').next('a').trigger('click');
+            // }else{
+            //     // alert('aqui')
+
+            // }
         })
+
+        getCuote.addEventListener('click', e => {
+
+            submiterProfileForm('form_coverage')
+                .then(function(resp){
+                    console.log(resp)
+                    if(resp.success){
+
+                        getForm.coverage = true;
+                        getForm.complete = true;
+                        localStorage.setItem("form", JSON.stringify(getForm));
+                        // console.log(resp, "success")
+
+                        window.location.href = "{{route('thanks')}}";
+
+                    }
+                })
+                .catch(function(resp){
+                    showErros(resp);
+                })
+
+        });
 
 
     </script>

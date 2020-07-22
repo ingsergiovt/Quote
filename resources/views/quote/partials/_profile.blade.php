@@ -3,7 +3,7 @@
     <div class="form-group row">
         <label for="first_name" class="col-sm-4 col-form-label">FIRST NAME*</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="first_name" name="first_name">
+            <input type="text" class="form-control form-control-sm" id="first_name" name="first_name" value="@isset($quote) {{ $quote->first_name }} @endisset">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -15,7 +15,7 @@
     <div class="form-group row">
         <label for="middlename" class="col-sm-4 col-form-label">MIDDLE NAME</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="middlename" name="middlename">
+            <input type="text" class="form-control form-control-sm" id="middlename" name="middlename" value="@isset($quote) {{ $quote->middlename }} @endisset">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -24,7 +24,8 @@
     <div class="form-group row">
         <label for="lastname" class="col-sm-4 col-form-label">LAST NAME*</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="lastname" name="lastname">
+            <input type="text" class="form-control form-control-sm" id="lastname" name="lastname"
+            value="@isset($quote) {{ $quote->lastname }} @endisset">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -33,7 +34,8 @@
     <div class="form-group row">
         <label for="street" class="col-sm-4 col-form-label">STREET ADDRESS*</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="street" name="street">
+            <input type="text" class="form-control form-control-sm" id="street" name="street"
+            value="@isset($quote) {{ $quote->street }} @endisset">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -42,7 +44,8 @@
     <div class="form-group row">
         <label for="city" class="col-sm-4 col-form-label">CITY*</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="city" name="city">
+            <input type="text" class="form-control form-control-sm" id="city" name="city"
+            value="@isset($quote) {{ $quote->city }} @endisset">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -51,7 +54,7 @@
     <div class="form-group row">
         <label for="state" class="col-sm-4 col-form-label">STATE*</label>
         <div class="col-sm-8">
-            <select class="custom-select custom-select-sm" id="state" name="state">
+            <select class="custom-select custom-select-sm" id="state" name="state" value="">
                 <option value="">Default select</option>
                 <option value="1">Option 1</option>
                 <option value="2">Option 2</option>
@@ -67,7 +70,7 @@
     <div class="form-group row">
         <label for="zipvehicle" class="col-sm-4 col-form-label">ZIP VEHICLE GARAGED*</label>
         <div class="col-sm-2">
-            <input type="text" class="form-control form-control-sm" id="zipvehicle" name="zipvehicle">
+            <input type="text" class="form-control form-control-sm" id="zipvehicle" name="zipvehicle" value="">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -77,7 +80,7 @@
     <div class="form-group row">
         <label for="email" class="col-sm-4 col-form-label">E-MAIL*</label>
         <div class="col-sm-8">
-            <input type="email" class="form-control form-control-sm" id="email" name="email">
+            <input type="email" class="form-control form-control-sm" id="email" name="email" value="">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -91,21 +94,21 @@
         <label for="homephone_cod1" class="col-sm-4 col-form-label">HOME PHONE*</label>
         (
         <div class="col-10 col-sm-2 mb-3 mb-md-0">
-            <input type="text" class="form-control form-control-sm" id="homephone_cod1" name="homephone_cod1">
+            <input type="text" class="form-control form-control-sm" id="homephone_cod1" name="homephone_cod1" value="">
             <div class="invalid-feedback">
                 Looks good!
             </div>
         </div>
         ) -
         <div class="col-10 col-sm-2 mb-3 mb-md-0">
-            <input type="text" class="form-control form-control-sm" id="homephone_cod2" name="homephone_cod2">
+            <input type="text" class="form-control form-control-sm" id="homephone_cod2" name="homephone_cod2" value="">
             <div class="invalid-feedback">
                 Looks good!
             </div>
         </div>
         -
         <div class="col-10 col-sm-2">
-            <input type="text" class="form-control form-control-sm" id="homephone_cod3" name="homephone_cod3">
+            <input type="text" class="form-control form-control-sm" id="homephone_cod3" name="homephone_cod3" value="">
             <div class="invalid-feedback">
                 Looks good!
             </div>

@@ -2,7 +2,7 @@
     <div class="form-group row">
         <label for="first_name" class="col-sm-4 col-form-label">FIRST NAME*</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="first_name" name="first_name">
+            <input type="text" class="form-control form-control-sm" id="first_name_driver" name="first_name">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -14,7 +14,7 @@
     <div class="form-group row">
         <label for="middlename" class="col-sm-4 col-form-label">MIDDLE NAME</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="middlename" name="middlename">
+            <input type="text" class="form-control form-control-sm" id="middlename_driver" name="middlename">
             <div class="invalid-feedback">
                 Looks good!
             </div>
@@ -23,7 +23,7 @@
     <div class="form-group row">
         <label for="lastname" class="col-sm-4 col-form-label">LAST NAME*</label>
         <div class="col-sm-8">
-            <input type="text" class="form-control form-control-sm" id="lastname" name="lastname">
+            <input type="text" class="form-control form-control-sm" id="lastname_driver" name="lastname">
             <div class="invalid-feedback">
                 Looks good!
             </div>
