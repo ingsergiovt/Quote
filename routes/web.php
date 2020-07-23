@@ -12,9 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function(){
+    return view('index');
+});
+Route::get('/form/{slug?}', 'QuoteController@create')->name('create.quote.company.form');
+Route::get('/form', 'QuoteController@create')->name('create.form');
 
-Route::get('/', 'QuoteController@create');
-Route::get('/form/{code?}', 'QuoteController@create')->name('get.form');
+Route::get('/form//vie', 'QuoteController@create')->name('get.form');
+
+Route::get('/edit/quote', 'QuoteController@edit')->name('edit.form');
+
 Route::post('/form/profile', 'QuoteController@store_profile')->name('form.profile.store');
 Route::post('/form/vehicle', 'QuoteController@store_vehicle')->name('form.vehicle.store');
 Route::post('/form/driver', 'QuoteController@store_driver')->name('form.driver.store');

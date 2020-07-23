@@ -95,6 +95,16 @@ class CreateQuotesTable extends Migration
 
             $table->text('code')->nullable();
 
+            $table->text('profile_form')->nullable();
+            $table->text('vehicle_from')->nullable();
+            $table->text('driver_form')->nullable();
+            $table->text('coverage_form')->nullable();
+
+
+
+            $table->foreignId('user_id')->constrained('users')->nullable();
+            // $table->foreign('user_id')->references('id')->on('users')->nullable();
+
             $table->timestamps();
         });
     }
