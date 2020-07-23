@@ -2,19 +2,19 @@
 
 <script>
     // console.log(localStorage.getItem("form"))
-    {
-        const form = JSON.parse(localStorage.getItem('form'))
-        if(form.complete){
+    // {
+    //     const form = JSON.parse(localStorage.getItem('form'))
+    //     if(form.complete){
 
-            window.location.href = "{{route('thanks')}}";
+    //         window.location.href = "{{route('thanks')}}";
 
-            // let route = "{{ route('get.form', ['code' => ':code']) }}"
-            // let url = route.replace(':code', form.id);
-            // console.log(form.id)
-            // window.location.href = url;
+    //         // let route = "{{ route('get.form', ['code' => ':code']) }}"
+    //         // let url = route.replace(':code', form.id);
+    //         // console.log(form.id)
+    //         // window.location.href = url;
 
-        }
-    }
+    //     }
+    // }
 
 
 </script>
@@ -26,7 +26,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        <h4> Edit your Quote Pending: {{$quote->code}} </h4>
+                        <h4> Continue your Quote Pending: @isset($quote){{$quote->code}}@endisset </h4>
                     </div>
 
                     <nav>
@@ -59,6 +59,10 @@
                                     <form action="{{route('form.profile.store')}}" class="mt-3 needs-validation " id="form_profile">
                                         @csrf
                                         @include('quote.partials._profile')
+                                        <input type="hidden" name="user_id" id="user_id"
+                                            value="@isset($quote){{$quote->user_id}}@endisset">
+                                        <input type="hidden" name="form_code" id="form_code_profile"
+                                        value="@isset($quote) {{$quote->code}} @endisset">
                                     </form>
                                 </div>
                             </div>
@@ -77,6 +81,8 @@
                                     <form action="{{route('form.vehicle.store')}}" class="mt-3 needs-validation " id="form_vehicle">
                                         @csrf
                                         @include('quote.partials._vehicle')
+                                        <input type="hidden" name="form_code" id="form_code_vehicle"
+                                        value="@isset($quote) {{$quote->code}} @endisset">
                                     </form>
                                 </div>
                             </div>
@@ -95,6 +101,8 @@
                                     <form action="{{route('form.driver.store')}}" class="mt-3 needs-validation " id="form_driver">
                                         @csrf
                                         @include('quote.partials._driver')
+                                        <input type="hidden" name="form_code" id="form_driver_vehicle"
+                                        value="@isset($quote) {{$quote->code}} @endisset">
                                     </form>
                                 </div>
                             </div>
@@ -113,6 +121,8 @@
                                     <form action="{{route('form.coverage.store')}}" class="mt-3 needs-validation " id="form_coverage">
                                         @csrf
                                         @include('quote.partials._coverage')
+                                        <input type="hidden" name="form_code" id="form_code_vehicle"
+                                        value="@isset($quote) {{$quote->code}} @endisset">
                                     </form>
                                 </div>
                             </div>
@@ -125,7 +135,23 @@
                                 </div>
 
                             </div>
+                            @isset($quote)
+                                @if($quote->profile_form)
+                                    <input type="hidden" id="profile_form" value="{{$quote->profile_form}}">
+                                @endif
+                            @endisset
 
+                            @isset($quote)
+                                @if($quote->vehicle_from)
+                                    <input type="hidden" id="vehicle_form" value="{{$quote->vehicle_from }}">
+                                @endif
+                            @endisset
+
+                            @isset($quote)
+                                @if($quote->driver_form)
+                                    <input type="hidden" id="driver_form" value="{{$quote->driver_form}}">
+                                @endif
+                            @endisset
                         </div>
                     </div>
 
@@ -222,6 +248,7 @@
             })
         }
 
+
         const showErros = (resp) => {
             const json = resp.responseJSON.errors
             const classes = document.querySelectorAll('.is-invalid')
@@ -247,8 +274,8 @@
 
 
 
-        const getForm = JSON.parse(localStorage.getItem('form'))
-        console.log(getForm);
+        // const getForm = JSON.parse(localStorage.getItem('form'))
+        // console.log(getForm);
 
         btnVehicle.disabled = true;
         btnDriver.disabled = true;
@@ -256,15 +283,32 @@
 
         btnProfile.disabled = false;
 
-        if(getForm.profile){
-            btnVehicle.disabled = false;
+        // if(getForm.profile){
+        //     btnVehicle.disabled = false;
+        // }
+        // if(getForm.vehicle){
+        //     btnDriver.disabled = false;
+        // }
+        // if(getForm.profile){
+        //     btnCovergae.disabled = false;
+        // }
+
+        if(document.getElementById('profile_form')){
+            if(document.getElementById('profile_form').value == true){
+                btnVehicle.disabled = false;
+            }
         }
-        if(getForm.vehicle){
-            btnDriver.disabled = false;
+        if(document.getElementById('vehicle_form')){
+            if(document.getElementById('vehicle_form').value == true){
+                btnDriver.disabled = false;
+            }
         }
-        if(getForm.profile){
-            btnCovergae.disabled = false;
+        if(document.getElementById('driver_form')){
+            if(document.getElementById('driver_form').value == true){
+                btnCovergae.disabled = false;
+            }
         }
+
 
 
         // $('.btnNext').click(function(){
@@ -283,15 +327,15 @@
                     if(resp.success){
 
                         btnVehicle.disabled = false;
-                        // console.log(resp);
-                        $('.nav-pills > .active').next('a').trigger('click');
 
+                        const classes = document.querySelectorAll('.is-invalid')
                         if(classes.length > 0){
                             classes.forEach(function(input){
                                 input.classList.remove('is-invalid');
                             })
                         }
 
+                        $('.nav-pills > .active').next('a').trigger('click');
                     }
                 })
                 .catch(function(resp){
@@ -308,7 +352,7 @@
         });
 
         secondContinue.addEventListener('click', e => {
-            const vehicleFormCompleted = getForm.vehicle
+            // const vehicleFormCompleted = getForm.vehicle
 
             submiterProfileForm('form_vehicle')
                 .then(function(resp){
@@ -316,8 +360,8 @@
                     if(resp.success){
 
                         btnDriver.disabled = false;
-                        getForm.vehicle = true;
-                        localStorage.setItem("form", JSON.stringify(getForm));
+                        // getForm.vehicle = true;
+                        // localStorage.setItem("form", JSON.stringify(getForm));
 
                         $('.nav-pills > .active').next('a').trigger('click');
 
@@ -345,10 +389,10 @@
                     if(resp.success){
 
                         btnCovergae.disabled = false;
-                        getForm.driver = true;
-                        localStorage.setItem("form", JSON.stringify(getForm));
+                        // getForm.driver = true;
+                        // localStorage.setItem("form", JSON.stringify(getForm));
                         $('.nav-pills > .active').next('a').trigger('click');
-                        console.log(resp, "success")
+                        // console.log(resp, "success")
 
                     }
                 })
@@ -372,9 +416,9 @@
                     console.log(resp)
                     if(resp.success){
 
-                        getForm.coverage = true;
-                        getForm.complete = true;
-                        localStorage.setItem("form", JSON.stringify(getForm));
+                        // getForm.coverage = true;
+                        // getForm.complete = true;
+                        // localStorage.setItem("form", JSON.stringify(getForm));
                         // console.log(resp, "success")
 
                         window.location.href = "{{route('thanks')}}";
