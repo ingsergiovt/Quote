@@ -28,8 +28,10 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
-                    Auto Quote
+                    <img src="{{ asset('img/logo.png') }}" alt="" width="80px">
+
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -76,6 +78,11 @@
                 </div>
             </div>
         </nav>
+
+        <div class="container text-right mt-4 h5 ">
+            <span> <b> For Help Call  1-(123)-123-1234 </b> </span>
+        </div>
+
 
         <main class="py-4">
             @yield('content')
